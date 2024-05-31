@@ -159,7 +159,6 @@ public:
     free(jpeg_io);
     free(out_info);
     jpeg_free_align(output_block);
-
     return true;
   }
 

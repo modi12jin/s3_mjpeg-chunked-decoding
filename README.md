@@ -13,7 +13,3 @@ ffmpeg -i input.mp4 -vf "fps=30,scale=-1:272:flags=lanczos,crop=480:in_h:(in_w-4
 # 注意事项
 
 >+ 启动PSRAM
-
-# 目前已知致命问题
-
->+ 播放完,会重启
