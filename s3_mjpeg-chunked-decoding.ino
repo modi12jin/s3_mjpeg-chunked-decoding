@@ -4,7 +4,7 @@
 nv3401a_lcd lcd = nv3401a_lcd(TFT_QSPI_CS, TFT_QSPI_SCK, TFT_QSPI_D0, TFT_QSPI_D1, TFT_QSPI_D2, TFT_QSPI_D3, TFT_QSPI_RST);
 
 #define MJPEG_FILENAME "/480_30fps.mjpeg"
-#define MJPEG_BUFFER_SIZE (480 * 272 * 2)  // 单个JPEG帧的内存
+#define MJPEG_BUFFER_SIZE (480 * 272 * 2 / 8)  // 单个JPEG帧的内存
 
 #include "MjpegClass.h"
 static MjpegClass mjpeg;
@@ -48,8 +48,7 @@ void setup() {
 
         start_ms = millis();
         curr_ms = millis();
-        mjpeg.setup(
-          &mjpegFile, mjpeg_buf, true /* useBigEndian */);
+        mjpeg.setup(&mjpegFile, mjpeg_buf, true /* useBigEndian */);
         while (mjpegFile.available() && mjpeg.readMjpegBuf()) {
           // Read video
           total_read_video += millis() - curr_ms;
@@ -64,7 +63,6 @@ void setup() {
         }
         int time_used = millis() - start_ms;
         Serial.println(F("MJPEG end"));
-        // jpeg_free_align(mjpeg_buf);
         mjpegFile.close();
         float fps = 1000.0 * total_frames / time_used;
         total_decode_video -= total_show_video;
