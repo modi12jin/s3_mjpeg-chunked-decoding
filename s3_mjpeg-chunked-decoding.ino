@@ -1,7 +1,7 @@
 #include "SD_MMC.h"
 #include "pins_config.h"
-#include "src/lcd/nv3401a_lcd.h"
-nv3401a_lcd lcd = nv3401a_lcd(TFT_QSPI_CS, TFT_QSPI_SCK, TFT_QSPI_D0, TFT_QSPI_D1, TFT_QSPI_D2, TFT_QSPI_D3, TFT_QSPI_RST);
+#include "src/lcd/nv3041a_lcd.h"
+nv3041a_lcd lcd = nv3041a_lcd(TFT_QSPI_CS, TFT_QSPI_SCK, TFT_QSPI_D0, TFT_QSPI_D1, TFT_QSPI_D2, TFT_QSPI_D3, TFT_QSPI_RST);
 
 #define MJPEG_FILENAME "/480_30fps.mjpeg"
 #define MJPEG_BUFFER_SIZE (480 * 272 * 2 / 8)  // 单个JPEG帧的内存
